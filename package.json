@@ -9,14 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.36.1",
+    "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "encoding": "^0.1.13",
+    "langchain": "^0.0.184",
     "lucide-react": "^0.287.0",
-    "next": "13.5.5",
+    "next": "13.5.4",
+    "openai": "^4.12.3",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "youtube-transcript": "^1.0.6"
   },
   "devDependencies": {
     "@types/node": "^20",
