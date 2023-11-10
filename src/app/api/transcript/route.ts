@@ -1,8 +1,6 @@
 import { getAudioTranscript, getTranscriptEmbeddings } from "@/lib/openai";
 import { NextResponse } from "next/server"
 
-
-
 export const POST = async (req: Request, res: Response) => {
     try {
         const body = await req.formData();
