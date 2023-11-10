@@ -48,11 +48,11 @@ const Page = (props: Props) => {
         />
       </div>
 
-      <div className="flex mt-8 gap-10">
+      <div className="flex mt-8 gap-4">
         <div className="w-[50%]">
           {videoId && (
             <iframe
-              width="560"
+              width="100%"
               height="315"
               src={`https://www.youtube.com/embed/${videoId}`}
               title="YouTube video player"
