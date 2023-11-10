@@ -48,7 +48,7 @@ const Page = (props: Props) => {
         />
       </div>
 
-      <div className="flex mt-8 gap-4">
+      <div className="flex mt-8 gap-4 h-max overflow-hidden">
         <div className="w-[50%]">
           {videoId && (
             <iframe
@@ -62,22 +62,24 @@ const Page = (props: Props) => {
             ></iframe>
           )}
         </div>
-        <div className="w-[50%] flex flex-col">
-          {messages.map((message) => {
-            return (
-              <p
-                className="shadow-md px-4 py-2 rounded-md mb-2"
-                key={message.id}
-                dangerouslySetInnerHTML={{
-                  __html:
-                    `<span>${
-                      message.role === "user" ? "User: " : "AI: "
-                    }</span>` + message.content,
-                }}
-              ></p>
-            );
-          })}
-          <div className="flex w-full gap-4 mt-auto">
+        <div className="w-[50%] flex flex-col relative pb-[50px] h-min overflow-hidden">
+          <div className="overflow-scroll">
+            {messages.map((message) => {
+              return (
+                <p
+                  className="shadow-md mx-2 my-1 px-4 py-2 rounded-md mb-2"
+                  key={message.id}
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      `<span>${
+                        message.role === "user" ? "User: " : "AI: "
+                      }</span>` + message.content,
+                  }}
+                ></p>
+              );
+            })}
+          </div>
+          <div className="flex w-full p-2 gap-4 mt-auto absolute bottom-0">
             <form className="flex w-full gap-4" onSubmit={handleSubmit}>
               <Input
                 className="w-full"
