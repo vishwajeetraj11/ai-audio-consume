@@ -9,7 +9,6 @@ import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { PromptTemplate } from 'langchain/prompts';
 import { Message as VercelChatMessage, StreamingTextResponse } from 'ai';
 import { BytesOutputParser } from 'langchain/schema/output_parser';
-// export const runtime = 'edge';
 
 const model = new ChatOpenAI({ modelName: "gpt-3.5-turbo", openAIApiKey: process.env.OPENAI_API_KEY });
 const embeddings = new OpenAIEmbeddings({ openAIApiKey: process.env.OPEN_AI_KEY });
@@ -56,15 +55,10 @@ export const POST = async (req: Request, res: Response) => {
         const docs = await textSplitter.createDocuments([readableParagraph]);
         const splitDocs = await textSplitter.splitDocuments(docs);
 
-        // if (!vectorStoreCache[videoId]) {
         const vectorStore = await MemoryVectorStore.fromDocuments(
             splitDocs,
             embeddings
         );
-        //     vectorStoreCache[videoId] = createStore;
-        // } else {
-        //     vectorStore = vectorStoreCache[videoId];
-        // }
 
         const outputParser = new BytesOutputParser();
 
