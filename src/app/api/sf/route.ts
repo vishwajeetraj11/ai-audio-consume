@@ -27,8 +27,8 @@ export const POST = async (req: Request, res: Response) => {
             method: 'get',
             url: 'https://gae2-spclient.spotify.com/manifests/v7/json/sources/7c2375b246b45826946c44fd08fcea3f/options/supports_drm',
             headers: {
-                'authorization': 'Bearer BQC2jEiPW28HMjg849mrvFk7-EmdnLEyjGLI-wQh7--EXoIlUSQchS8hM-fzBMd3TkNUi7tfk7uAZh2V7IDfNigHSYQcZa3HBt6NqYtLLVLwUsnOMrKxMv8RtKEjbDyeoyk-y2xWPmb3AXyDWl_pceah0w9tReqA5l9eV3YDpcqkfQS-HJBtN3PuzvwuNYb0a2eT4iXVgFhnYE5yizlfOnhb-z3BzXPOK_Sfxv13UITmYKYFCC30_i_N6AGGR-6x8D7xmridQKFmQFXe1o1crZFXVEinGbb_XMPIdZ0Zuh0SSfm827BuU6-HTtTF1_IDJMIudj6VQa5vC0F5I0FXSgEm',
-                'Cookie': 'sp_landing=https%3A%2F%2Fopen.spotify.com%2Fepisode%2F4ea1GXuMMHrJA2eVtttg1N%3Fsp_cid%3D519e7948471d2a78d3cae5377f42dcb1%26device%3Ddesktop%26si%3DfGweIyBnSRiB5gMzqZporw; sp_t=519e7948471d2a78d3cae5377f42dcb1'
+                'authorization': '',
+                'Cookie': ''
             }
         };
 
