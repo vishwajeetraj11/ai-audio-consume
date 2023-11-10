@@ -26,14 +26,9 @@ const template = `Use the following pieces of context to answer the question at 
   User: {question}
   AI:`;
 
-const cache: any = {
+let cache: any = {
 
 }
-
-const vectorStoreCache: any = {
-
-}
-
 
 export const POST = async (req: Request, res: Response) => {
     try {
@@ -48,6 +43,9 @@ export const POST = async (req: Request, res: Response) => {
         }
         let readableParagraph = ''
         // const videoId = 'fPL5YnDXaYE'
+        if (Object.entries(cache).length > 30) {
+            cache = {}
+        }
         if (!cache[videoId]) {
             const yt_transcript = await YoutubeTranscript.fetchTranscript(videoId);
             readableParagraph = yt_transcript.map(obj => obj.text).join(' ');
