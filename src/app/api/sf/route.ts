@@ -1,12 +1,12 @@
 
 import { NextResponse } from "next/server";
-import { YoutubeTranscript } from 'youtube-transcript';
+// import { YoutubeTranscript } from 'youtube-transcript';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
-import { MemoryVectorStore } from 'langchain/vectorstores/memory';
-import { RetrievalQAChain } from 'langchain/chains';
+// import { MemoryVectorStore } from 'langchain/vectorstores/memory';
+// import { RetrievalQAChain } from 'langchain/chains';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-import { PromptTemplate } from 'langchain/prompts';
+// import { PromptTemplate } from 'langchain/prompts';
 import axios from "axios";
 
 
