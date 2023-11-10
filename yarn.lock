@@ -27,7 +27,7 @@
     node-fetch "^2.6.7"
     web-streams-polyfill "^3.2.1"
 
-"@babel/runtime@^7.23.2":
+"@babel/runtime@^7.13.10", "@babel/runtime@^7.23.2":
   version "7.23.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.2.tgz#062b0ac103261d68a966c4c7baf2ae3e62ec3885"
   integrity sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==
@@ -195,6 +195,21 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@radix-ui/react-compose-refs@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.0.1.tgz#7ed868b66946aa6030e580b1ffca386dd4d21989"
+  integrity sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+
+"@radix-ui/react-slot@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.0.2.tgz#a9ff4423eade67f501ffb32ec22064bc9d3099ab"
+  integrity sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-compose-refs" "1.0.1"
+
 "@rushstack/eslint-patch@^1.3.3":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.5.1.tgz#5f1b518ec5fa54437c0b7c4a821546c64fed6922"
@@ -356,6 +371,19 @@ agentkeepalive@^4.2.1:
   integrity sha512-5GG/5IbQQpC9FpkRGsSvZI5QYeSCzlJHdpBQntCsuTOxhKD8lqKhrleg2Yi7yvMIf82Ycmmqln9U8V9qwEiJew==
   dependencies:
     humanize-ms "^1.2.1"
+
+ai@^2.2.22:
+  version "2.2.22"
+  resolved "https://registry.yarnpkg.com/ai/-/ai-2.2.22.tgz#c40842d9a421d0d6d8a30d91b4e47e330874ad88"
+  integrity sha512-H1TXjX3uGYU4bb8/GUTaY7BJ6YiMJDpp8WpmqwdVLmAh0+HufB7r27vCX0R4XXzJhdRaYp0ex6s9QvqkfvVA2A==
+  dependencies:
+    eventsource-parser "1.0.0"
+    nanoid "3.3.6"
+    solid-swr-store "0.10.7"
+    sswr "2.0.0"
+    swr "2.2.0"
+    swr-store "0.10.6"
+    swrv "1.0.4"
 
 ajv@^6.12.4:
   version "6.12.6"
@@ -1178,6 +1206,11 @@ eventemitter3@^4.0.4:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
+
+eventsource-parser@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/eventsource-parser/-/eventsource-parser-1.0.0.tgz#6332e37fd5512e3c8d9df05773b2bf9e152ccc04"
+  integrity sha512-9jgfSCa3dmEme2ES3mPByGXfgZ87VbP97tng1G2nWwWx6bV2nYxm2AWCrbQjXToSe+yYlqaZNtxffR9IeQr95g==
 
 expr-eval@^2.0.2:
   version "2.0.2"
@@ -2020,6 +2053,11 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
+nanoid@3.3.6:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
+  integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
+
 nanoid@^3.3.6:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.7.tgz#d0c301a691bc8d54efa0a2226ccf3fe2fd656bd8"
@@ -2582,10 +2620,22 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
+solid-swr-store@0.10.7:
+  version "0.10.7"
+  resolved "https://registry.yarnpkg.com/solid-swr-store/-/solid-swr-store-0.10.7.tgz#9511308f01250a1509efbfaad5b481be7517e436"
+  integrity sha512-A6d68aJmRP471aWqKKPE2tpgOiR5fH4qXQNfKIec+Vap+MGQm3tvXlT8n0I8UgJSlNAsSAUuw2VTviH2h3Vv5g==
+
 source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
+
+sswr@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sswr/-/sswr-2.0.0.tgz#db5e1f7c44addb8316de8e7efe23b7ea2cba090d"
+  integrity sha512-mV0kkeBHcjcb0M5NqKtKVg/uTIYNlIIniyDfSGrSfxpEdM9C365jK0z55pl9K0xAkNTJi2OAOVFQpgMPUk+V0w==
+  dependencies:
+    swrev "^4.0.0"
 
 streamsearch@^1.1.0:
   version "1.1.0"
@@ -2682,6 +2732,30 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+swr-store@0.10.6:
+  version "0.10.6"
+  resolved "https://registry.yarnpkg.com/swr-store/-/swr-store-0.10.6.tgz#1856bda886e87dbed40c8c9874c1b1624d2e502d"
+  integrity sha512-xPjB1hARSiRaNNlUQvWSVrG5SirCjk2TmaUyzzvk69SZQan9hCJqw/5rG9iL7xElHU784GxRPISClq4488/XVw==
+  dependencies:
+    dequal "^2.0.3"
+
+swr@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-2.2.0.tgz#575c6ac1bec087847f4c86a39ccbc0043c834d6a"
+  integrity sha512-AjqHOv2lAhkuUdIiBu9xbuettzAzWXmCEcLONNKJRba87WAefz8Ca9d6ds/SzrPc235n1IxWYdhJ2zF3MNUaoQ==
+  dependencies:
+    use-sync-external-store "^1.2.0"
+
+swrev@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/swrev/-/swrev-4.0.0.tgz#83da6983c7ef9d71ac984a9b169fc197cbf18ff8"
+  integrity sha512-LqVcOHSB4cPGgitD1riJ1Hh4vdmITOp+BkmfmXRh4hSF/t7EnS4iD+SOTmq7w5pPm/SiPeto4ADbKS6dHUDWFA==
+
+swrv@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/swrv/-/swrv-1.0.4.tgz#278b4811ed4acbb1ae46654972a482fd1847e480"
+  integrity sha512-zjEkcP8Ywmj+xOJW3lIT65ciY/4AL4e/Or7Gj0MzU3zBJNMdJiT8geVZhINavnlHRMMCcJLHhraLTAiDOTmQ9g==
 
 tailwind-merge@^1.14.0:
   version "1.14.0"
@@ -2878,7 +2952,7 @@ util-deprecate@^1.0.2:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-uuid@^9.0.0:
+uuid@^9.0.0, uuid@^9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
   integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
