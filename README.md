@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img width="1341" alt="Screenshot 2023-11-10 at 5 19 40 PM" src="https://github.com/vishwajeetraj11/ai-audio-consume/assets/47270995/ebb2cd75-0be7-48d2-8a70-299843f2d746">This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -34,3 +34,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+<img width="1341" alt="Screenshot 2023-11-10 at 5 19 40 PM" src="https://github.com/vishwajeetraj11/ai-audio-consume/assets/47270995/10c1f0a8-bd19-4265-8fd1-0b29da0757ed">
