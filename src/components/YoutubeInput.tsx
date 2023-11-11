@@ -6,8 +6,9 @@ interface YoutubeInputProps {
   ytUrl: string;
   setYtUrl: (url: string) => void;
   setVideoId: (id: string) => void;
-  mutateAsync: (params: { videoId: string; query: string }) => void;
+  mutateAsync: (params: { videoId: string; urlParam?: string }) => void;
   query?: string;
+  onClick: () => void;
   videoId?: string;
 }
 
@@ -18,6 +19,7 @@ const YoutubeInput: React.FC<YoutubeInputProps> = ({
   mutateAsync,
   query,
   videoId,
+  onClick,
 }) => {
   return (
     <>
@@ -38,14 +40,7 @@ const YoutubeInput: React.FC<YoutubeInputProps> = ({
           }
         }}
       />
-      <Button
-        className="min-w-fit"
-        onClick={() => {
-          if (query && videoId) {
-            mutateAsync({ videoId, query: query || "" });
-          }
-        }}
-      >
+      <Button className="min-w-fit" onClick={onClick}>
         Generate Transript
       </Button>
     </>
