@@ -65,7 +65,7 @@ const Page = (props: Props) => {
       sMutateAsync({ videoId, urlParam: "summary" });
     }
   };
-
+  console.log(hData);
   return (
     <div className="min-h-screen p-10">
       <div className="flex">
@@ -129,9 +129,11 @@ const Page = (props: Props) => {
       <div>
         <p>Highlights</p>
         <ul>
-          {hData?.data?.text?.map((highlight: any, i: number) => {
-            return <li key={i}>{highlight}</li>;
-          })}
+          {hData
+            ? hData?.data?.text?.map((highlight: any, i: number) => {
+                return <li key={i}>{highlight}</li>;
+              })
+            : null}
         </ul>
         <p>Summary</p>
         {sData?.data?.text}
