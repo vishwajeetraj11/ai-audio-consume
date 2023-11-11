@@ -5,55 +5,87 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useChat } from "ai/react";
 
 type Props = {};
 const Page = (props: Props) => {
-  const { data, mutateAsync, reset } = useMutation({
-    mutationFn: ({ videoId, query }: { videoId: string; query: string }) => {
-      return axios.post(`/api/yt`, { videoId, query });
+  const { data: hData, mutateAsync: hMutateAsync } = useMutation({
+    mutationFn: ({
+      videoId,
+      query,
+      urlParam,
+    }: {
+      videoId: string;
+      query?: string;
+      urlParam?: string;
+    }) => {
+      return axios.post(`/api/yt?${urlParam}`, { videoId, query });
     },
-    onSuccess: (data) => {},
+
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  const {
+    data: sData,
+    mutateAsync: sMutateAsync,
+    reset,
+  } = useMutation({
+    mutationFn: ({
+      videoId,
+      query,
+      urlParam,
+    }: {
+      videoId: string;
+      query?: string;
+      urlParam?: string;
+    }) => {
+      return axios.post(`/api/yt?${urlParam}`, { videoId, query });
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
   });
 
   const [videoId, setVideoId] = React.useState("");
   const [ytUrl, setYtUrl] = React.useState("");
   const [query, setQuery] = React.useState("");
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    api: "/api/yt",
-    body: { videoId, query },
-    onError: (err) => {
-      console.log({ err });
-    },
-    onFinish: (finish) => {
-      console.log({ finish });
-    },
-    onResponse: (res) => {
-      console.log({ res });
-    },
-  });
-  console.log(data);
-  console.log(messages);
+
+  const { messages, input, handleInputChange, handleSubmit, isLoading } =
+    useChat({
+      api: "/api/yt",
+      body: { videoId, query },
+    });
+
+  const onClick = () => {
+    if (videoId) {
+      hMutateAsync({ videoId, urlParam: "highlight" });
+      sMutateAsync({ videoId, urlParam: "summary" });
+    }
+  };
+
   return (
     <div className="min-h-screen p-10">
       <div className="flex">
         <YoutubeInput
-          mutateAsync={mutateAsync}
+          mutateAsync={hMutateAsync}
           setVideoId={setVideoId}
           setYtUrl={setYtUrl}
           ytUrl={ytUrl}
           videoId={videoId}
           query={query}
+          onClick={onClick}
         />
       </div>
 
-      <div className="flex mt-8 gap-4 h-max overflow-hidden">
+      <div className="flex mt-8 gap-4 overflow-hidden">
         <div className="w-[50%]">
           {videoId && (
             <iframe
               width="100%"
-              height="315"
+              height="500"
               src={`https://www.youtube.com/embed/${videoId}`}
               title="YouTube video player"
               frameBorder="0"
@@ -78,6 +110,7 @@ const Page = (props: Props) => {
                 ></p>
               );
             })}
+            {isLoading ? <p>Loading...</p> : null}
           </div>
           <div className="flex w-full p-2 gap-4 mt-auto absolute bottom-0">
             <form className="flex w-full gap-4" onSubmit={handleSubmit}>
@@ -92,6 +125,16 @@ const Page = (props: Props) => {
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <p>Highlights</p>
+        <ul>
+          {hData?.data?.text?.map((highlight: any, i: number) => {
+            return <li key={i}>{highlight}</li>;
+          })}
+        </ul>
+        <p>Summary</p>
+        {sData?.data?.text}
       </div>
     </div>
   );
