@@ -9,6 +9,47 @@ import React, { useState } from "react";
 import { useChat } from "ai/react";
 
 type Props = {};
+const dd = {
+  response: [
+    { chapterName: "Economy", timestamps: ["01:46:43,199", "01:46:47,580"] },
+    {
+      chapterName: "Unlimited Information",
+      timestamps: ["01:46:44,300", "01:46:50,040"],
+    },
+    {
+      chapterName: "Struggling to Find Transcendence",
+      timestamps: ["01:46:47,580", "01:46:52,320"],
+    },
+    {
+      chapterName: "10 Extra Coordinates",
+      timestamps: ["01:26:02,520", "01:26:08,280"],
+    },
+    {
+      chapterName: "Pinched to Zoom",
+      timestamps: ["01:26:08,280", "01:26:14,580"],
+    },
+    {
+      chapterName: "Shear to Tilt",
+      timestamps: ["01:26:17,159", "01:26:21,239"],
+    },
+    {
+      chapterName: "Fantasizing vs Love",
+      timestamps: ["02:52:28,680", "02:52:34,080"],
+    },
+    {
+      chapterName: "Naming of Things",
+      timestamps: ["02:52:34,080", "02:52:38,399"],
+    },
+    {
+      chapterName: "Emotions in Life",
+      timestamps: ["01:56:54,679", "01:56:59,699"],
+    },
+    {
+      chapterName: "Equal Dosages",
+      timestamps: ["01:56:59,699", "01:57:05,040"],
+    },
+  ],
+};
 const Page = (props: Props) => {
   const { data: hData, mutateAsync: hMutateAsync } = useMutation({
     mutationFn: ({
@@ -65,7 +106,6 @@ const Page = (props: Props) => {
       sMutateAsync({ videoId, urlParam: "summary" });
     }
   };
-  console.log(hData);
   return (
     <div className="min-h-screen p-10">
       <div className="flex">
@@ -127,6 +167,20 @@ const Page = (props: Props) => {
         </div>
       </div>
       <div>
+        {/* <p>Chapters</p>
+        <ul>
+          {dd.response.map((chapter, i) => {
+            return (
+              <div className="flex" key={i}>
+                <p>{chapter.chapterName}</p>
+                <span className="ml-auto">
+                  {chapter.timestamps[0].split(",")[0]}-
+                  {chapter.timestamps[1].split(",")[0]}
+                </span>
+              </div>
+            );
+          })}
+        </ul> */}
         <p>Highlights</p>
         <ul>
           {hData
@@ -143,3 +197,7 @@ const Page = (props: Props) => {
 };
 
 export default Page;
+
+/*
+Ignore the timestamps first make a transcript then use that to separate it into chapters, and now consider the timestamps and Please furnish a JSON response containing a maximum of 10 chapter names that if expanded or asked upon covers the entire subtitles provided. Please keep the chapters a minimum of 2-3 mins long. response format = {response: {chapterName: string, timestamps: [start, end]}[]}
+*/
