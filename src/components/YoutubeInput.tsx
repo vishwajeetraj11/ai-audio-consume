@@ -6,19 +6,13 @@ interface YoutubeInputProps {
   ytUrl: string;
   setYtUrl: (url: string) => void;
   setVideoId: (id: string) => void;
-  mutateAsync: (params: { videoId: string; urlParam?: string }) => void;
-  query?: string;
   onClick: () => void;
-  videoId?: string;
 }
 
 const YoutubeInput: React.FC<YoutubeInputProps> = ({
   ytUrl,
   setYtUrl,
   setVideoId,
-  mutateAsync,
-  query,
-  videoId,
   onClick,
 }) => {
   return (

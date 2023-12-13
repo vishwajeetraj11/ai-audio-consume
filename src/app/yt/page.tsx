@@ -51,28 +51,10 @@ const dd = {
   ],
 };
 const Page = (props: Props) => {
-  const { data: hData, mutateAsync: hMutateAsync } = useMutation({
-    mutationFn: ({
-      videoId,
-      query,
-      urlParam,
-    }: {
-      videoId: string;
-      query?: string;
-      urlParam?: string;
-    }) => {
-      return axios.post(`/api/yt?${urlParam}`, { videoId, query });
-    },
-
-    onSuccess: (data) => {
-      console.log(data);
-    },
-  });
-
   const {
-    data: sData,
-    mutateAsync: sMutateAsync,
-    reset,
+    isLoading: hIsLoading,
+    data: hData,
+    mutateAsync: hMutateAsync,
   } = useMutation({
     mutationFn: ({
       videoId,
@@ -85,10 +67,47 @@ const Page = (props: Props) => {
     }) => {
       return axios.post(`/api/yt?${urlParam}`, { videoId, query });
     },
+
     onSuccess: (data) => {
       console.log(data);
     },
   });
+
+  const { data: sData, mutateAsync: sMutateAsync } = useMutation({
+    mutationFn: ({
+      videoId,
+      query,
+      urlParam,
+    }: {
+      videoId: string;
+      query?: string;
+      urlParam?: string;
+    }) => {
+      return axios.post(`/api/yt?${urlParam}`, { videoId, query });
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  const { data: cData, mutateAsync: cMutateAsync } = useMutation({
+    mutationFn: ({
+      videoId,
+      query,
+      urlParam,
+    }: {
+      videoId: string;
+      query?: string;
+      urlParam?: string;
+    }) => {
+      return axios.post(`/api/yt?${urlParam}`, { videoId, query });
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  console.log({ cData });
 
   const [videoId, setVideoId] = React.useState("");
   const [ytUrl, setYtUrl] = React.useState("");
@@ -104,18 +123,16 @@ const Page = (props: Props) => {
     if (videoId) {
       hMutateAsync({ videoId, urlParam: "highlight" });
       sMutateAsync({ videoId, urlParam: "summary" });
+      cMutateAsync({ videoId, urlParam: "chapters" });
     }
   };
   return (
     <div className="min-h-screen p-10">
       <div className="flex">
         <YoutubeInput
-          mutateAsync={hMutateAsync}
           setVideoId={setVideoId}
           setYtUrl={setYtUrl}
           ytUrl={ytUrl}
-          videoId={videoId}
-          query={query}
           onClick={onClick}
         />
       </div>
@@ -128,7 +145,6 @@ const Page = (props: Props) => {
               height="500"
               src={`https://www.youtube.com/embed/${videoId}`}
               title="YouTube video player"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
@@ -167,29 +183,27 @@ const Page = (props: Props) => {
         </div>
       </div>
       <div>
-        {/* <p>Chapters</p>
+        <p className="text-xl my-4">Chapters</p>
         <ul>
-          {dd.response.map((chapter, i) => {
+          {cData?.data?.map((chapter: string, i: number) => {
             return (
               <div className="flex" key={i}>
-                <p>{chapter.chapterName}</p>
-                <span className="ml-auto">
-                  {chapter.timestamps[0].split(",")[0]}-
-                  {chapter.timestamps[1].split(",")[0]}
-                </span>
+                <p>{chapter}</p>
               </div>
             );
           })}
-        </ul> */}
-        <p>Highlights</p>
-        <ul>
-          {hData
-            ? hData?.data?.text?.map((highlight: any, i: number) => {
-                return <li key={i}>{highlight}</li>;
-              })
-            : null}
         </ul>
-        <p>Summary</p>
+        <p className="text-xl my-4">Highlights</p>
+        <ul>
+          {hIsLoading ? (
+            <p>Loading</p>
+          ) : hData ? (
+            hData?.data?.text?.map((highlight: any, i: number) => {
+              return <li key={i}>{highlight}</li>;
+            })
+          ) : null}
+        </ul>
+        <p className="text-xl my-4">Summary</p>
         {sData?.data?.text}
       </div>
     </div>
